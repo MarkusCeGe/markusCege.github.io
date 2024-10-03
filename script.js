@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Definición de conjugaciones reales para un solo verbo por cada idioma para hacer la prueba
+    // Definición de conjugaciones reales para cada idioma
     const conjugations = {
         french: {
             "être": {
@@ -36,12 +36,40 @@ document.addEventListener("DOMContentLoaded", function () {
                 german: "Ich bin glücklich gewesen.",
                 spanish: "Yo he sido feliz."
             }
+        },
+        "essere": {
+            "Presente indicativo": {
+                french: "Je suis content d'être ici.",
+                italian: "Io sono felice di essere qui.",
+                german: "Ich bin froh, hier zu sein.",
+                spanish: "Yo estoy contento de estar aquí."
+            },
+            "Pasado próximo": {
+                french: "J'ai été heureux.",
+                italian: "Sono stato felice.",
+                german: "Ich bin glücklich gewesen.",
+                spanish: "Yo he sido feliz."
+            }
+        },
+        "sein": {
+            "Presente": {
+                french: "Je suis content d'être ici.",
+                italian: "Io sono felice di essere qui.",
+                german: "Ich bin froh, hier zu sein.",
+                spanish: "Yo estoy contento de estar aquí."
+            },
+            "Perfecto": {
+                french: "J'ai été heureux.",
+                italian: "Sono stato felice.",
+                german: "Ich bin glücklich gewesen.",
+                spanish: "Yo he sido feliz."
+            }
         }
     };
 
     // Variables de control de juego
     let selectedLanguage = ""; // Idioma a seleccionar por el usuario al inicio
-    let currentVerb = "être"; // Verbo fijo por ahora (puede modificarse según el idioma)
+    let currentVerb = ""; // Verbo fijo por ahora (puede modificarse según el idioma)
     let currentTense = ""; // Tiempo verbal que cambia dinámicamente
     let currentPerson = ""; // Persona que cambia dinámicamente
     let currentAnswer = ""; // Almacena la respuesta correcta
@@ -76,6 +104,11 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedLanguage = language;
         languageSelection.classList.add("hidden"); // Ocultar selección de idioma
         questionSelection.classList.remove("hidden"); // Mostrar selección de número de preguntas
+
+        // Definir el verbo para cada idioma
+        if (selectedLanguage === "french") currentVerb = "être";
+        if (selectedLanguage === "italian") currentVerb = "essere";
+        if (selectedLanguage === "german") currentVerb = "sein";
     }
 
     // Función para iniciar el juego
