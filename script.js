@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Variables de control de juego
     let selectedLanguage = ""; // Idioma a seleccionar por el usuario al inicio
-    let currentVerb = ""; // Verbo fijo por ahora (puede modificarse según el idioma)
+    let currentVerb = ""; // Verbo a utilizar según el idioma seleccionado
     let currentTense = ""; // Tiempo verbal que cambia dinámicamente
     let currentPerson = ""; // Persona que cambia dinámicamente
     let currentAnswer = ""; // Almacena la respuesta correcta
@@ -132,8 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Seleccionar una persona y un tiempo verbal aleatorios basados en el idioma seleccionado
-        currentPerson = getRandomElement(Object.keys(conjugations[selectedLanguage][currentVerb]["Presente del indicativo"]));
-        currentTense = getRandomElement(Object.keys(conjugations[selectedLanguage][currentVerb]));
+        const tenses = Object.keys(conjugations[selectedLanguage][currentVerb]); // Obtener tiempos verbales
+        const persons = Object.keys(conjugations[selectedLanguage][currentVerb]["Presente del indicativo"]); // Obtener personas
+        currentTense = getRandomElement(tenses); // Selección aleatoria del tiempo verbal
+        currentPerson = getRandomElement(persons); // Selección aleatoria de la persona
 
         // Definir la respuesta correcta basada en el verbo, la persona y el tiempo verbal
         currentAnswer = conjugations[selectedLanguage][currentVerb][currentTense][currentPerson];
