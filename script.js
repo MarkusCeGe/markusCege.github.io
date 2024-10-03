@@ -170,9 +170,9 @@ document.addEventListener("DOMContentLoaded", function () {
         updateCounters();
 
         if (questionCount < totalQuestions) {
-            setTimeout(nextQuestion, 5000); // Esperar y mostrar la siguiente pregunta
+            setTimeout(nextQuestion, 10000); // Esperar y mostrar la siguiente pregunta
         } else {
-            setTimeout(endGame, 5000); // Finalizar el juego después de la última pregunta
+            setTimeout(endGame, 10000); // Finalizar el juego después de la última pregunta
         }
     }
 
